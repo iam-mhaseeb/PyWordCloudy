@@ -5,7 +5,7 @@ class WordsExtractor:
 
     """This class is responsible for exctracting & cleaning
         words from text string sent by main module and store
-        dictionary of words extracted from string in
+        list of words extracted from string in
         extracted_words variable."""
 
     def __init__(self, input_txt):

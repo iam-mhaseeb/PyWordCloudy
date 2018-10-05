@@ -1,20 +1,22 @@
 import os
 
 
-class TopicsExtractor:
+class WordsExtractor:
 
-    """This class is responsible for exctracting concepts
-        from text string sent by main module and return
-        dictionary of topics extracted from string."""
+    """This class is responsible for exctracting & cleaning
+        words from text string sent by main module and store
+        dictionary of words extracted from string in
+        extracted_words variable."""
 
     def __init__(self, input_txt):
 
-        """This is constructor for topics extractor class
+        """This is constructor for words extractor class
             it takes text string and act as controller to
             expose text string to whole class."""
 
-        input_txt = input_txt
-        tokenized_txt = self.get_tokenized_text(self.input_txt)
+        self.extracted_words = None
+        tokenized_words = self.get_tokenized_text(input_txt)
+        cleaned_words = self.remove_stop_words(tokenized_words)
 
     def get_tokenized_text(self, input_txt):
 
@@ -45,7 +47,7 @@ class TopicsExtractor:
         cleaned text : list of cleaned non stop words strings
              each string representing a word.
         """
-
-        with open(("stop_words_list.txt"), "r") as stop_words_file:
+        file_path = r"Py Word Cloud/Topics Extractor/stop_words_list.txt"
+        with open(file_path, "r") as stop_words_file:
             stop_words = stop_words_file.read()
-            return [word for word in tokenized_txt if word not in stop_words]
+            return set([word for word in tokenized_txt if word not in stop_words])

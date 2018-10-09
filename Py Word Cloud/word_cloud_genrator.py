@@ -111,6 +111,7 @@ class WordCloudGenrator:
         -------
         word_cloud: Newly created word cloud image with words on it
             font weight representing the frequency of word."""
+
         img_d = ImageDraw.Draw(img)
 
         for word, style in cloud_styles.items():
@@ -122,3 +123,17 @@ class WordCloudGenrator:
             os.path.dirname(__file__), "word_cloud.png")
         img.save(path_to_save)
         return img
+
+    def get_word_cloud(self):
+
+        """This function return genrated word cloud
+            to caller.
+
+        Parameters
+        ----------
+        None
+        -------
+        word_cloud: Newly created word cloud image with words on it
+            font weight representing the frequency of word."""
+
+        return self.word_cloud

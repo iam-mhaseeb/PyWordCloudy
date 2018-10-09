@@ -70,5 +70,6 @@ class WordsExtractor:
         """
 
         tagged_words = nltk.pos_tag(cleaned_words)
-        tags = ["NN", "NNS", "NNP", "NNPS", "VB", "VBD", "VBG", "VBN", "VBP", "VBZ"]
+        tags = ["NN", "NNS", "NNP", "NNPS", "VB", "VBD",
+                "VBG", "VBN", "VBP", "VBZ"]
         return [word for word, tag in tagged_words if tag in tags]

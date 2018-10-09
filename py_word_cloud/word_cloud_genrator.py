@@ -2,7 +2,7 @@ import os
 import random
 import operator
 from itertools import groupby
-from words_extractor import WordsExtractor
+from . import WordsExtractor
 from PIL import Image, ImageDraw, ImageFont
 
 

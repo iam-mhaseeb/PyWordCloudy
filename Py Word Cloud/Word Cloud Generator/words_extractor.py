@@ -1,3 +1,4 @@
+import os
 import nltk
 
 
@@ -48,7 +49,8 @@ class WordsExtractor:
              each string representing a word.
         """
 
-        file_path = r"Py Word Cloud/Word Cloud Generator/stop_words_list.txt"
+        file_path = os.path.join(
+            os.path.dirname(__file__), "stop_words_list.txt")
         with open(file_path, "r") as stop_words_file:
             stop_words = stop_words_file.read()
             return [word for word in tokenized_txt if word not in stop_words]

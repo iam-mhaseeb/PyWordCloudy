@@ -7,7 +7,7 @@ from itertools import groupby
 from PIL import Image, ImageDraw, ImageFont
 from .words_extractor import WordsExtractor
 
-FONT_PATH = os.environ.get("FONT_PATH", os.path.dirname(__file__), "font.ttf")
+FONT_PATH = os.path.join(os.path.dirname(__file__), "font.ttf")
 
 
 class WordCloudGenrator:

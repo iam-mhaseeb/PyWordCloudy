@@ -1,7 +1,7 @@
 import os
 import nltk
 
-STOPWORDS = os.environ.get('STOPWORDS',  os.path.join(os.path.dirname(__file__), "stop_words_list.txt"))
+STOPWORDS = os.path.join(os.path.dirname(__file__), "stop_words_list.txt")
 
 
 class WordsExtractor:

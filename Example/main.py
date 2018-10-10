@@ -1,4 +1,4 @@
-from py_word_cloud import WordCloudGenrator
+from pywc import WordCloudGenrator
 
 test_txt = """A computer is a programmable machine. The two principal
                 characteristics of a computer are: It responds to a

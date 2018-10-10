@@ -1,9 +1,13 @@
+from __future__ import absolute_import
+
 import os
 import random
 import operator
 from itertools import groupby
-from . import WordsExtractor
 from PIL import Image, ImageDraw, ImageFont
+from .words_extractor import WordsExtractor
+
+FONT_PATH = os.environ.get("FONT_PATH", os.path.dirname(__file__), "font.ttf")
 
 
 class WordCloudGenrator:
@@ -61,14 +65,13 @@ class WordCloudGenrator:
             words_freq.items(), key=operator.itemgetter(1), reverse=True)
         cloud_styles = {}
         font_size = 20
-        font_path = os.path.join(os.path.dirname(__file__), "font.ttf")
         max_freq = sorted_words[0][1]
 
         for word_freq in sorted_words:
             if word_freq[1] < max_freq and font_size > 12:
                 max_freq = word_freq[1]
                 font_size = int(font_size/1.5)
-            fnt = ImageFont.truetype(font_path, font_size)
+            fnt = ImageFont.truetype(FONT_PATH, font_size)
             width = random.randint(100, 400)
             height = random.randint(100, 300)
             r = random.randint(1, 200)

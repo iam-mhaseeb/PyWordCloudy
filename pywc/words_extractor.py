@@ -1,11 +1,13 @@
 import os
 import nltk
 
+STOPWORDS = os.environ.get('STOPWORDS',  os.path.join(os.path.dirname(__file__), "stop_words_list.txt"))
+
 
 class WordsExtractor:
 
     """This class is responsible for exctracting & cleaning
-        words from text string sent by word cloud generator module 
+        words from text string sent by word cloud generator module
         and store list of words extracted from string in
         extracted_words variable."""
 
@@ -49,9 +51,7 @@ class WordsExtractor:
              each string representing a word.
         """
 
-        file_path = os.path.join(
-            os.path.dirname(__file__), "stop_words_list.txt")
-        with open(file_path, "r") as stop_words_file:
+        with open(STOPWORDS, "r") as stop_words_file:
             stop_words = stop_words_file.read()
             return [word for word in tokenized_txt if word not in stop_words]
 

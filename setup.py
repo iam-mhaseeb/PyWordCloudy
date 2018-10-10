@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='Py Word Cloud',
+setup(name='pywordcloud',
       version='1.0',
       description='A happy light weight word cloud generator in Python',
       url='https://github.com/iam-mhaseeb/py_word_cloud',

@@ -7,8 +7,9 @@ setup(name='pywordcloud',
       author='Muhammad Haseeb',
       author_email='haseeb.emailbox@gmail.com',
       license='MIT',
-      packages=['pywc'],
+      packages=['pywordcloud'],
       install_requires=[
           'nltk', 'pillow'
       ],
-      zip_safe=False)
+      zip_safe=False,
+      include_package_data=True)

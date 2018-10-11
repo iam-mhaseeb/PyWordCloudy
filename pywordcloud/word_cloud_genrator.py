@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 import os
 import random
+import inspect
 import operator
 from itertools import groupby
 from PIL import Image, ImageDraw, ImageFont
@@ -23,6 +24,8 @@ class WordCloudGenrator:
             expose text string to whole class."""
 
         if input_txt:
+            self.img_path = os.path.dirname(
+                os.path.abspath((inspect.stack()[1])[1]))
             words_extractor = WordsExtractor(input_txt)
             extracted_words = words_extractor.extracted_words
             words_freq = self.generate_frequencies(extracted_words)
@@ -122,9 +125,7 @@ class WordCloudGenrator:
                        font=style.get("font"),
                        fill=(style.get("r"), style.get("g"), style.get("b")))
 
-        path_to_save = os.path.join(
-            os.path.dirname(__file__), "word_cloud.png")
-        img.save(path_to_save)
+        img.save(self.img_path+"/word_cloud.png")
         return img
 
     def get_word_cloud(self):

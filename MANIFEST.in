@@ -1,2 +1,2 @@
-include pycw/font.ttf
-include pycw/stop_words_list.txt
+include font.ttf
+include stop_words_list.txt

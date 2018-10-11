@@ -11,5 +11,7 @@ setup(name='pywordcloud',
       install_requires=[
           'nltk', 'pillow'
       ],
+      data_files=[('static', [
+          'pywordcloud/font.ttf', 'pywordcloud/stop_words_list.txt'])],
       zip_safe=False,
       include_package_data=True)

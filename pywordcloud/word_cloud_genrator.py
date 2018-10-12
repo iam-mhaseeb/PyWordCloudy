@@ -76,14 +76,13 @@ class WordCloudGenrator:
                 max_freq = word_freq[1]
                 font_size = int(font_size/1.5)
             fnt = ImageFont.truetype(FONT_PATH, font_size)
-
+            # TODO: Write text on new img paste new image on word cloud
             dimens_set = False
             while not dimens_set:
                 width = random.randint(50, 400)
                 height = random.randint(10, 350)
 
                 for dimen in dimens:
-
                     if dimen[0]-5 <= width <= dimen[0]+10:
                         break
                     if dimen[1]-30 <= height <= dimen[1]+30:

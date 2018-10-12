@@ -6,9 +6,10 @@ import inspect
 import operator
 from itertools import groupby
 from PIL import Image, ImageDraw, ImageFont
-from .words_extractor import WordsExtractor
+from words_extractor import WordsExtractor  # TODO: Make it .words_extractor
 
 FONT_PATH = os.path.join(os.path.dirname(__file__), "font.ttf")
+random.seed()
 
 
 class WordCloudGenrator:
@@ -29,8 +30,8 @@ class WordCloudGenrator:
             words_extractor = WordsExtractor(input_txt)
             extracted_words = words_extractor.extracted_words
             words_freq = self.generate_frequencies(extracted_words)
-            cloud_styles = self.generate_cloud_styles(words_freq)
             img = self.generate_image()
+            cloud_styles = self.generate_cloud_styles(words_freq, img)
             self.word_cloud = self.generate_word_cloud(img, cloud_styles)
         else:
             raise ValueError(
@@ -51,7 +52,7 @@ class WordCloudGenrator:
 
         return {key: len(list(group)) for key, group in groupby(words)}
 
-    def generate_cloud_styles(self, words_freq):
+    def generate_cloud_styles(self, words_freq, img):
 
         """This function generates font size for words
             based on frequncies and return dictionary
@@ -67,16 +68,39 @@ class WordCloudGenrator:
         sorted_words = sorted(
             words_freq.items(), key=operator.itemgetter(1), reverse=True)
         cloud_styles = {}
-        font_size = 20
+        font_size = 30
         max_freq = sorted_words[0][1]
+        dimens = []
+        dimens_set = False
 
         for word_freq in sorted_words:
             if word_freq[1] < max_freq and font_size > 12:
                 max_freq = word_freq[1]
                 font_size = int(font_size/1.5)
             fnt = ImageFont.truetype(FONT_PATH, font_size)
-            width = random.randint(100, 400)
-            height = random.randint(100, 300)
+
+            while not dimens_set:
+                width = random.randint(100, 400)
+                height = random.randint(100, 300)
+
+                for dimen in dimens:
+
+                    if dimen[0]-10 <= width <= dimen[0]+10:
+                        if dimen[1]-10 <= height <= dimen[1]+10:
+                            break
+                        else:
+                            dimens_set = True
+                            break
+                    elif dimen[1]-10 <= height <= dimen[1]+10:
+                        if dimen[0]-10 <= width <= dimen[0]+10:
+                            break
+                        else:
+                            dimens_set = True
+                            break
+                else:
+                    dimens_set = True
+
+            dimens.append([width, height])
             r = random.randint(1, 200)
             g = random.randint(1, 200)
             b = random.randint(1, 200)
@@ -141,3 +165,12 @@ class WordCloudGenrator:
             font weight representing the frequency of word."""
 
         return self.word_cloud
+
+
+test_txt = """A computer is a programmable machine. The two principal
+                characteristics of a computer are: It responds to a
+                specific set of instructions in a well-defined manner
+                and it can execute a prerecorded list of instructions
+                (a program)."""
+
+word_cloud = WordCloudGenrator(input_txt=test_txt)

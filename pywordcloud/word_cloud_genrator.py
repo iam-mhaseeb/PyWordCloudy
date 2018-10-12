@@ -9,7 +9,6 @@ from PIL import Image, ImageDraw, ImageFont
 from words_extractor import WordsExtractor  # TODO: Make it .words_extractor
 
 FONT_PATH = os.path.join(os.path.dirname(__file__), "font.ttf")
-random.seed()
 
 
 class WordCloudGenrator:
@@ -71,7 +70,6 @@ class WordCloudGenrator:
         font_size = 30
         max_freq = sorted_words[0][1]
         dimens = []
-        dimens_set = False
 
         for word_freq in sorted_words:
             if word_freq[1] < max_freq and font_size > 12:
@@ -79,24 +77,18 @@ class WordCloudGenrator:
                 font_size = int(font_size/1.5)
             fnt = ImageFont.truetype(FONT_PATH, font_size)
 
+            dimens_set = False
             while not dimens_set:
-                width = random.randint(100, 400)
-                height = random.randint(100, 300)
+                width = random.randint(50, 400)
+                height = random.randint(10, 350)
 
                 for dimen in dimens:
 
-                    if dimen[0]-10 <= width <= dimen[0]+10:
-                        if dimen[1]-10 <= height <= dimen[1]+10:
-                            break
-                        else:
-                            dimens_set = True
-                            break
-                    elif dimen[1]-10 <= height <= dimen[1]+10:
-                        if dimen[0]-10 <= width <= dimen[0]+10:
-                            break
-                        else:
-                            dimens_set = True
-                            break
+                    if dimen[0]-5 <= width <= dimen[0]+10:
+                        break
+                    if dimen[1]-30 <= height <= dimen[1]+30:
+                        break
+
                 else:
                     dimens_set = True
 
@@ -167,10 +159,14 @@ class WordCloudGenrator:
         return self.word_cloud
 
 
-test_txt = """A computer is a programmable machine. The two principal
-                characteristics of a computer are: It responds to a
-                specific set of instructions in a well-defined manner
-                and it can execute a prerecorded list of instructions
-                (a program)."""
+test_txt = """Pakistan[b] (Urdu: پاکِستان‬‎), officially the Islamic Republic of Pakistan (Urdu: اِسلامی جمہوریہ پاکِستان‬‎), is a country in South Asia. It is the fifth-most populous country with a population exceeding 212,742,631 people.[19] In area, it is the 33rd-largest country, spanning 881,913 square kilometres (340,509 square miles). Pakistan has a 1,046-kilometre (650-mile) coastline along the Arabian Sea and Gulf of Oman in the south and is bordered by India to the east, Afghanistan to the west, Iran to the southwest, and China in the far northeast. It is separated narrowly from Tajikistan by Afghanistan's Wakhan Corridor in the northwest, and also shares a maritime border with Oman.
+
+The territory that now constitutes Pakistan was the site of several ancient cultures, including the Mehrgarh of the Neolithic and the Bronze Age Indus Valley Civilisation, and was later home to kingdoms ruled by people of different faiths and cultures, including Hindus, Indo-Greeks, Muslims, Turco-Mongols, Afghans, and Sikhs. The area has been ruled by numerous empires and dynasties, including the Persian Achaemenid Empire, Alexander III of Macedon, the Seleucid Empire, the Indian Maurya Empire, the Gupta Empire,[26] the Arab Umayyad Caliphate, the Delhi Sultanate, the Mongol Empire, the Mughal Empire, the Afghan Durrani Empire, the Sikh Empire (partially), and, most recently, the British Empire.
+
+Pakistan is the only country to have been created in the name of Islam.[27][28] As a result of the Pakistan Movement led by Muhammad Ali Jinnah and the Indian subcontinent's struggle for independence, the sovereign state of Pakistan was created in 1947 as an independent homeland for Indian Muslims.[29] It is an ethnically and linguistically diverse country, with a similarly diverse geography and wildlife. Initially a dominion, Pakistan adopted a constitution in 1956, becoming an Islamic republic. An ethnic civil war in 1971 resulted in the secession of East Pakistan as the new country of Bangladesh.[30] In 1973 Pakistan adopted a new constitution establishing, alongside its pre-existing parliamentary republic status, a federal government based in Islamabad consisting of four provinces and three federal territories. The new constitution also stipulated that all laws are to conform to the injunctions of Islam as laid down in the Quran and Sunnah.[31]
+
+A regional[32][33][34] and middle power,[35][36][37] Pakistan has the sixth-largest standing armed forces in the world and is also a nuclear power as well as a declared nuclear-weapons state, the second in South Asia and the only nation in the Muslim world to have that status. Pakistan has a semi-industrialised economy with a well-integrated agriculture sector and a growing services sector.[38][39] The Pakistani economy is the 24th-largest in the world in terms of purchasing power and the 41st-largest in terms of nominal GDP (World Bank). It is ranked among the emerging and growth-leading economies of the world,[40][41] and is backed by one of the world's largest and fastest-growing middle class.[42][43]
+
+Pakistan's political history since independence has been characterized by periods of military rule, political instability and conflicts with India. The country continues to face challenging problems, including overpopulation, terrorism, poverty, illiteracy, and corruption.[44][45][46][47] Pakistan is a member of the United Nations, the Shanghai Cooperation Organisation, the Non-Aligned Movement, the Organisation of Islamic Cooperation, the Commonwealth of Nations, the Economic Cooperation Organisation, the South Asian Association for Regional Cooperation, the Developing Eight, and the G20 developing nations, Group of 24, Group of 77, and ECOSOC. It is also an associate member of CERN. Pakistan is a signatory to the Kyoto Protocol, the Paris Agreement, and the International Covenant on Civil and Political Rights."""
 
 word_cloud = WordCloudGenrator(input_txt=test_txt)

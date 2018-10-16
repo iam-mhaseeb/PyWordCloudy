@@ -1,3 +1,4 @@
+import re
 import os
 import nltk
 
@@ -35,7 +36,24 @@ class WordsExtractor:
             representing a word.
         """
 
-        return input_txt.split()
+        return input_txt.lower().split()
+
+    def _clean_in(self, tokenized_txt):
+
+        """This function removes clean wornd
+            discard non words andreturn remaining words as list.
+
+        Parameters
+        ----------
+        tokenized_txt : iterable of tokenized strings.
+        Returns
+        -------
+        tokenized_txt text : list of cleaned words strings
+             each string representing a word.
+        """
+
+        tokenized_txt = [re.sub('\s+', ' ', x).strip() for x in tokenized_txt if x]
+        return [x for x in tokenized_txt if x]
 
     def remove_stop_words(self, tokenized_txt):
 
@@ -50,6 +68,8 @@ class WordsExtractor:
         cleaned text : list of cleaned non stop words strings
              each string representing a word.
         """
+
+        tokenized_txt = self._clean_in(tokenized_txt)
 
         with open(STOPWORDS, "r") as stop_words_file:
             stop_words = stop_words_file.read()

@@ -40,8 +40,8 @@ class WordsExtractor:
 
     def _clean_in(self, tokenized_txt):
 
-        """This function removes clean wornd
-            discard non words andreturn remaining words as list.
+        """This function clean word and discard
+            non words and return remaining words as list.
 
         Parameters
         ----------

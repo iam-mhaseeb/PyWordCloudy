@@ -52,7 +52,7 @@ class WordsExtractor:
              each string representing a word.
         """
 
-        tokenized_txt = [re.sub('\s+', ' ', x).strip() for x in tokenized_txt if x]
+        tokenized_txt = [re.sub('\W+', ' ', x).strip() for x in tokenized_txt if x]
         return [x for x in tokenized_txt if x]
 
     def remove_stop_words(self, tokenized_txt):

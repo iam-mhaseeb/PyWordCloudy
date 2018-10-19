@@ -5,13 +5,10 @@ with io.open('README.md', encoding='utf_8') as fp:
     readme = fp.read()
 
 setup(name='pywordcloudy',
-      version='1.0',
+      version='1.1',
       description='A happy light weight word cloud generator in Python',
       long_description=readme,
       long_description_content_type='text/markdown',
-      classifiers=[
-        'Programming Language :: Python :: 3.6',
-      ],
       keywords='wordcloud textprocessing',
       url='https://github.com/iam-mhaseeb/pywordcloudy',
       author='Muhammad Haseeb',

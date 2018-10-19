@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../PyCloudy/.idea/PyCloudy.iml" filepath="$PROJECT_DIR$/../PyCloudy/.idea/PyCloudy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../PyWordCloudy/.idea/PyWordCloudy.iml" filepath="$PROJECT_DIR$/../PyWordCloudy/.idea/PyWordCloudy.iml" />
     </modules>
   </component>
 </project>

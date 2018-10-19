@@ -1,7 +1,7 @@
 from unittest import TestCase
-from pycloudy import WordCloudGenrator
+from pywordcloudy import WordCloudGenrator
 
-class TestPyCloudy(TestCase):
+class TestPyWordCloudy(TestCase):
     def test_is_genrate_word_cloud(self):
         wordcloud = WordCloudGenrator("A simpel text  to test word cloud.")
         self.assertTrue(isinstance(wordcloud, WordCloudGenrator))

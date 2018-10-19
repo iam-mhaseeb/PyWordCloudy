@@ -1,11 +1,11 @@
-# PyCloudy
+# PyWordCloudy
 A happy light weight word cloud generator in Python
 
 ## Installation
 
 Installation is simplest with pip:
 
-    pip install pycloudy
+    pip install pywordcloudy
     
 
 #### Installation notes

@@ -4,7 +4,7 @@ from setuptools import setup
 with io.open('README.md', encoding='utf_8') as fp:
     readme = fp.read()
 
-setup(name='pycloudy',
+setup(name='pywordcloudy',
       version='1.0',
       description='A happy light weight word cloud generator in Python',
       long_description=readme,
@@ -13,16 +13,16 @@ setup(name='pycloudy',
         'Programming Language :: Python :: 3.6',
       ],
       keywords='wordcloud textprocessing',
-      url='https://github.com/iam-mhaseeb/PyCloudy',
+      url='https://github.com/iam-mhaseeb/pywordcloudy',
       author='Muhammad Haseeb',
       author_email='haseeb.emailbox@gmail.com',
       license='MIT',
-      packages=['pycloudy'],
+      packages=['pywordcloudy'],
       install_requires=[
           'nltk', 'pillow'
       ],
       data_files=[('static', [
-          'pycloudy/font.ttf', 'pycloudy/stop_words_list.txt'])],
+          'pywordcloudy/font.ttf', 'pywordcloudy/stop_words_list.txt'])],
       zip_safe=False,
       include_package_data=True,
       test_suite='nose.collector',

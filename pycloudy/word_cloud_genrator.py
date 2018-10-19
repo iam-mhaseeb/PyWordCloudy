@@ -6,7 +6,7 @@ import inspect
 import operator
 from itertools import groupby
 from PIL import Image, ImageDraw, ImageFont
-from pywordcloud.words_extractor import  WordsExtractor
+from pycloudy.words_extractor import  WordsExtractor
 
 random.seed()
 FONT_PATH = os.path.join(os.path.dirname(__file__), "font.ttf")

@@ -1,4 +1,4 @@
 from .word_cloud_genrator import WordCloudGenrator
 
-name = "pywordcloud"
+name = "pycloudy"
 __all__ = ["WordCloudGenrator"]

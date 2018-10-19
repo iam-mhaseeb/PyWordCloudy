@@ -1,4 +1,4 @@
-from pywordcloud import WordCloudGenrator
+from pycloudy import WordCloudGenrator
 
 test_txt = """The time has come. Electric scooter sharing services are returning to the streets
             of San Francisco — this time with explicit permission from the SF Municipal Transportation
